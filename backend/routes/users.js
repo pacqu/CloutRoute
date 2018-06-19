@@ -82,6 +82,14 @@ router.post('/newuser', function(req, res, next) {
   });
 });
 
+/* Fuction Called to Check if User with given Username and Password Exists*/
+router.post('/verifyuser', function(req,res,next){
+  var username = req.body.username;
+  var password = req.body.password;
+  userPassExists(username,password,function(result){
+    res.send(result);
+  });
+});
 
 //HANDLE CLOSING DB ON CLOSING APP
 process.stdin.resume();//so the program will not close instantly
