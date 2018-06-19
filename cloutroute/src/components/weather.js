@@ -6,7 +6,9 @@ weather is an object from the API call
 WeatherBar parses the necessary data to determine
 the low and high, and based on the precipitation
 indicate which icon should be shown
+NEED TO ADD CSS ICONS
 */
+
 const WeatherBar = ({weather}) => {
   if (!weather){
     return <div> Loading...</div>
