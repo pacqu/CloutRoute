@@ -30,7 +30,35 @@ db.serialize(function() {
 
 /* GET users listing. */
 router.post('/newuser', function(req, res, next) {
+//Function Checks if User with Given Username Already Exists
+function userExists(username, callback){
+  db.get("SELECT * FROM users WHERE username=?",[username],function(err,res){
+    if (callback) callback(res);
+    if (res === undefined){
+      console.log('dis undefined');
+      return false
+    }
+    else return true;
+  })
+}
 
+//Checks if Combination of User and (Un-Hashed)Password Already Exist
+function userPassExists(username, unhashedpass, callback){
+  userExists(username, function(result){
+    if (result === undefined){
+      if (callback) callback(false);
+      return false;
+    }
+    else{
+      var hashedpass = result.password;
+      bcrypt.compare(unhashedpass, hashedpass, function(err, res) {
+        console.log('dis password is: ' + res)
+        if (callback) callback(res);
+        return res;
+      });
+    }
+  });
+}
   //console.log(req.body);
   var username = req.body.username;
   var password = req.body.password;
