@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Weather.css';
 
 /*
 weather is an object from the API call

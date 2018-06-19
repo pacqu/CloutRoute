@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import WeatherBar from './components/Weather';
 import axios from "axios";
