@@ -3,7 +3,12 @@ import './Login.css';
 
 class Login extends Component {
 
-
+     // called when user submits login info
+     // sends request to user and waits for response
+     handleSubmitLoginInfo(event){
+          console.log("Username: " + this.refs.username_entry);
+          console.log("Password: " + this.refs.password_entry);
+     }
 
      render() {
           return (
@@ -13,10 +18,15 @@ class Login extends Component {
                     </div>
                     <div className="input-container">
                          <div className="username-input-container">
-                              <input id="username-entry" type="text"> </input>
+                              <input ref="username_entry" id="username_entry" type="text"> </input>
                          </div>
                          <div className="password-input-container">
-                              <input id="password-entry" type="password"> </input>
+                              <input ref="password_entry" id="password_entry" type="password"> </input>
+                         </div>
+                         <div className="submit-button-container">
+                              <input id="submit_button" type="button"
+                                   onclick={this.handleSubmitLoginInfo.bind(this)}>
+                              </input>
                          </div>
                     </div>
                </div>
