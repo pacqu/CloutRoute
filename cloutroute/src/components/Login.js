@@ -14,7 +14,7 @@ class Login extends Component {
           return (
                <div className="login">
                     <div className="logo-container">
-                         <img src="clout_route_logo-01.png"/>
+                         <img id="logo-graphic" src="clout_route_logo-01.png"/>
                     </div>
                     <div className="input-container">
                          <div className="username-input-container">

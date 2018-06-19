@@ -1,0 +1,15 @@
+.login {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-around;
+     height: 100%;
+}
+
+.logo-container {
+     height: 25%;
+}
+
+img#logo-graphic {
+     height: 50%;
+}
