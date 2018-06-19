@@ -28,21 +28,68 @@ db.serialize(function() {
   });*/
 });
 
-/* GET users listing. */
-router.post('/newuser', function(req, res, next) {
+//Function Checks if User with Given Username Already Exists
+function userExists(username, callback){
+  db.get("SELECT * FROM users WHERE username=?",[username],function(err,res){
+    if (callback) callback(res);
+    if (res === undefined){
+      console.log('dis undefined');
+      return false
+    }
+    else return true;
+  })
+}
 
+//Checks if Combination of User and (Un-Hashed)Password Already Exist
+function userPassExists(username, unhashedpass, callback){
+  userExists(username, function(result){
+    if (result === undefined){
+      if (callback) callback(false);
+      return false;
+    }
+    else{
+      var hashedpass = result.password;
+      bcrypt.compare(unhashedpass, hashedpass, function(err, res) {
+        console.log('dis password is: ' + res)
+        if (callback) callback(res);
+        return res;
+      });
+    }
+  });
+}
+/* Function to Register User into User Database*/
+router.post('/newuser', function(req, res, next) {
   //console.log(req.body);
   var username = req.body.username;
   var password = req.body.password;
-  bcrypt.hash(password,10).then(function(hashedPass){
-    db.run("INSERT INTO users (username, password) VALUES (?, ?)",[username,hashedPass]);
-  }).then(function(){
-    db.all("SELECT * FROM users", function(err, all){
-      res.send(all);
-    });
+  //Check if username already exists
+  userExists(username, function(result){
+    //Username Doesn't Already Exist
+    if (result){
+      res.send('user already exists')
+    }
+    //User Doesn't Exist
+    else{
+      //Hashing Password for secure storage
+      bcrypt.hash(password,10).then(function(hashedPass){
+        db.run("INSERT INTO users (username, password) VALUES (?, ?)",[username,hashedPass]);
+      }).then(function(){
+        db.all("SELECT * FROM users", function(err, all){
+          res.send(all);
+        });
+      });
+    }
   });
 });
 
+/* Fuction Called to Check if User with given Username and Password Exists*/
+router.post('/verifyuser', function(req,res,next){
+  var username = req.body.username;
+  var password = req.body.password;
+  userPassExists(username,password,function(result){
+    res.send(result);
+  });
+});
 
 //HANDLE CLOSING DB ON CLOSING APP
 process.stdin.resume();//so the program will not close instantly
