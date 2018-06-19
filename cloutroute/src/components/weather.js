@@ -15,11 +15,13 @@ const WeatherBar = ({weather}) => {
   const precip = weather.weather[0].main;
 
   return (
-    <div>
-      The icon should be a
-      {(precip === 'Clear' || precip ==='Clouds') ?  <div>Sun</div> : <div>Raining or Umbrella</div> }
-      The min is {min.toFixed(2)}.
-      The max is {max.toFixed(2)}.
+    <div className="Weather">
+      <div className="Weather-header">
+        The icon should be a
+        {(precip === 'Clear' || precip ==='Clouds') ?  <div>Sun</div> : <div>Raining or Umbrella</div> }
+        The min is {min.toFixed(2)}.
+        The max is {max.toFixed(2)}.
+      </div>
     </div>
 
   )
