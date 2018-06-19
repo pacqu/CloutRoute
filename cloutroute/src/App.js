@@ -21,6 +21,9 @@ class App extends Component {
     this.state = {};
   }
 
+  /* Calls the Weather API and sets state to
+  the data object.
+  */
   componentDidMount(){
     console.log("weather", weather);
     axios.get(weather)

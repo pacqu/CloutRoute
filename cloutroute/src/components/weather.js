@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 
-
+/*
+weather is an object from the API call
+WeatherBar parses the necessary data to determine
+the low and high, and based on the precipitation
+indicate which icon should be shown
+*/
 const WeatherBar = ({weather}) => {
   if (!weather){
     return <div> Loading...</div>
   }
   const min = (weather.main.temp_min * 1) * 9/5 - 459.67;
   const max = (weather.main.temp_max * 1) * 9/5 - 459.67;
-  const percep = weather.weather[0].main;
+  const precip = weather.weather[0].main;
 
   return (
     <div>
       The icon should be a
-      {(percep === 'Clear' || percep ==='Clouds') ?  <div>Sun</div> : <div>Raining or Umbrella</div> }
+      {(precip === 'Clear' || precip ==='Clouds') ?  <div>Sun</div> : <div>Raining or Umbrella</div> }
       The min is {min.toFixed(2)}.
       The max is {max.toFixed(2)}.
     </div>
