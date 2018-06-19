@@ -28,8 +28,6 @@ db.serialize(function() {
   });*/
 });
 
-/* GET users listing. */
-router.post('/newuser', function(req, res, next) {
 //Function Checks if User with Given Username Already Exists
 function userExists(username, callback){
   db.get("SELECT * FROM users WHERE username=?",[username],function(err,res){
@@ -59,15 +57,28 @@ function userPassExists(username, unhashedpass, callback){
     }
   });
 }
+/* Function to Register User into User Database*/
+router.post('/newuser', function(req, res, next) {
   //console.log(req.body);
   var username = req.body.username;
   var password = req.body.password;
-  bcrypt.hash(password,10).then(function(hashedPass){
-    db.run("INSERT INTO users (username, password) VALUES (?, ?)",[username,hashedPass]);
-  }).then(function(){
-    db.all("SELECT * FROM users", function(err, all){
-      res.send(all);
-    });
+  //Check if username already exists
+  userExists(username, function(result){
+    //Username Doesn't Already Exist
+    if (result){
+      res.send('user already exists')
+    }
+    //User Doesn't Exist
+    else{
+      //Hashing Password for secure storage
+      bcrypt.hash(password,10).then(function(hashedPass){
+        db.run("INSERT INTO users (username, password) VALUES (?, ?)",[username,hashedPass]);
+      }).then(function(){
+        db.all("SELECT * FROM users", function(err, all){
+          res.send(all);
+        });
+      });
+    }
   });
 });
 
