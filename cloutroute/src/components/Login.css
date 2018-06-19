@@ -4,12 +4,46 @@
      align-items: center;
      justify-content: space-around;
      height: 100%;
+     background: linear-gradient( rgb(135,178,153), rgb(235,178,153) );
 }
 
 .logo-container {
      height: 25%;
 }
 
-img#logo-graphic {
-     height: 50%;
+#logo-graphic {
+     display: block;
+     max-height: 300px;
+     max-width: 200px;
+}
+
+.input-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 200px;
+     width: 500px;
+}
+
+.input-entry-text {
+     font-size: 1.5em;
+     text-align: center;
+     height: 40px;
+     width: 300px;
+     margin: 10px;
+}
+
+.input-entry-text:focus {
+    background-color: powderblue;
+}
+
+#submit-button {
+     font-size: 1.5em;
+     text-align: center;
+     background-color: blue;
+     border: 2px solid black;
+     height: 50px;
+     width: 100px;
+     margin: 10px;
 }
