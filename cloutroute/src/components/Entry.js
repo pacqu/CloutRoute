@@ -28,16 +28,19 @@ class Entry extends Component {
   render(){
     if (this.state.newuser){
       return (
-        <div className="entry">
+        <div className="entry" id="register">
           <div className="login-register-choice-bar">
-            <button id="register-button" type="button"
+            <button className="button" id="register-button" type="button"
               onClick={this.handleRegisterSelection.bind(this)}>
-              Sign Up
+              New User
             </button>
-            <button id="login-button" type="button"
+            <button className="button" id="login-button" type="button"
               onClick={this.handleLoginSelection.bind(this)}>
-              Login
+              Existing User
             </button>
+          </div>
+          <div className="logo-container">
+            <img id="logo-graphic" src="clout_route_logo.png"/>
           </div>
           <div className="register-container">
             <Register/>
@@ -46,16 +49,19 @@ class Entry extends Component {
       );
     } else {
       return (
-        <div className="entry">
+        <div className="entry" id="login">
           <div className="login-register-choice-bar">
-            <button id="register-button" type="button"
+            <button className="button" id="register-button" type="button"
               onClick={this.handleRegisterSelection.bind(this)}>
-              Sign Up
+              New User
             </button>
-            <button id="login-button" type="button"
+            <button className="button" id="login-button" type="button"
               onClick={this.handleLoginSelection.bind(this)}>
-              Login
+              Existing User
             </button>
+          </div>
+          <div className="logo-container">
+            <img id="logo-graphic" src="clout_route_logo.png"/>
           </div>
           <div className="login-container">
             <Login/>
