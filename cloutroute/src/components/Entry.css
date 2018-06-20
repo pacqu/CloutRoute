@@ -1,0 +1,18 @@
+.entry {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.login-register-choice-bar {
+
+}
+
+.register-container {
+
+}
+
+.login-container {
+
+}
