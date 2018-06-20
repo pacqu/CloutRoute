@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Weather.css';
+import './weather-icons-master/css/weather-icons.css';
 
 /*
 weather is an object from the API call
@@ -20,8 +21,7 @@ const WeatherBar = ({weather}) => {
   return (
     <div className="Weather">
       <div className="Weather-header">
-        The icon should be a
-        {(precip === 'Clear' || precip ==='Clouds') ?  <div>Sun</div> : <div>Raining or Umbrella</div> }
+        <i className={(precip==='Clear' || precip==='Clouds')? "wi wi-umbrella" : "wi wi-forecast-io-clear-day:before"}></i>
         The min is {min.toFixed(2)}.
         The max is {max.toFixed(2)}.
       </div>

@@ -6,10 +6,11 @@ import axios from "axios";
 // import 'react-open-weather/lib/css/ReactWeather.css';
 
 const WEATHER_API_KEY = 'cfd81373d0a942ac745fc27d11206173';
-const zip = 10573;
-const country = ",us"
-let weather = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + country + "&appid=" + WEATHER_API_KEY;
 
+const country = ",us"
+const city = "Port Chester"
+
+let weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + country + "&appid=" + WEATHER_API_KEY;
 class App extends Component {
   constructor(){
     super();
