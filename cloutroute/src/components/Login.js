@@ -11,7 +11,7 @@ class Login extends Component {
          'password': this.refs.password_entry.value
        };
        console.log(jsonBody);
-       fetch('/users/newuser', {
+       fetch('/users/verifyuser', {
          method: 'POST',
          headers: {
            'Accept': 'application/json',
