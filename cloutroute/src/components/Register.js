@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Login.css';
+import './Register.css';
 
-class Login extends Component {
+class Register extends Component {
 
      // called when user submits registration
      // sends request to user and waits for response
@@ -13,10 +13,7 @@ class Login extends Component {
 
      render() {
           return (
-               <div className="login">
-                    <div className="logo-container">
-                         <img id="logo-graphic" src="clout_route_logo.png"/>
-                    </div>
+               <div className="register">
                     <div className="input-container">
                          <div className="username-input-container">
                               <input className="input-entry-text" ref="username_entry" id="username_entry" type="text"/>
