@@ -17,13 +17,19 @@ const WeatherBar = ({weather}) => {
   const min = (weather.main.temp_min * 1) * 9/5 - 459.67;
   const max = (weather.main.temp_max * 1) * 9/5 - 459.67;
   const precip = weather.weather[0].main;
+  console.log("inside weather: ",weather);
 
   return (
     <div className="Weather">
       <div className="Weather-header">
-        <i className={(precip==='Clear' || precip==='Clouds')? "wi wi-umbrella" : "wi wi-forecast-io-clear-day:before"}></i>
-        The min is {min.toFixed(2)}.
-        The max is {max.toFixed(2)}.
+        Expected Minimum: {min.toFixed(2)}
+        <br />
+        Expected Maximum: {max.toFixed(2)}
+        <br />
+        <i className={
+          (precip ==='Clear' || precip==='Clouds')?
+          "wi wi-umbrella" : "wi wi-forecast-io-clear-day:before"}>
+        </i>
       </div>
     </div>
 
