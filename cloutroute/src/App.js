@@ -42,14 +42,8 @@ class App extends Component {
     return (
 
       <div className="App">
-<<<<<<< HEAD
-        {/*<Register />
-        <Login />
-        <WeatherBar weather={weather} />*/}
-=======
         <Register />
         {/*<WeatherBar weather={weather} />*/}
->>>>>>> master
       </div>
     );
   }
