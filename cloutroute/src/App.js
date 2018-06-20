@@ -3,6 +3,7 @@ import './App.css';
 import WeatherBar from './components/Weather';
 import Login from './components/Login';
 import Register from './components/Register';
+import Entry from './components/Entry';
 import axios from "axios";
 // import ReactWeather from 'react-open-weather';
 // import 'react-open-weather/lib/css/ReactWeather.css';
@@ -36,9 +37,8 @@ class App extends Component {
   render() {
    const weather = this.state.weather;
     return (
-
       <div className="App">
-        <Register />
+        <Entry />
         {/*<WeatherBar weather={weather} />*/}
       </div>
     );

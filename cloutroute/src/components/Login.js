@@ -26,10 +26,10 @@ class Login extends Component {
                <div className="login">
                     <div className="input-container">
                          <div className="username-input-container">
-                              <input className="input-entry-text" ref="username_entry" id="username_entry" type="text"/>
+                              <input className="input-entry-text" placeholder="username" ref="username_entry" id="username_entry" type="text"/>
                          </div>
                          <div className="password-input-container">
-                              <input className="input-entry-text" ref="password_entry" id="password_entry" type="password"/>
+                              <input className="input-entry-text" placeholder="password" ref="password_entry" id="password_entry" type="password"/>
                          </div>
                          <div className="submit-button-container">
                               <button id="submit-button" type="button"
