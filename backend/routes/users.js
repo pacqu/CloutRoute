@@ -75,7 +75,7 @@ router.post('/newuser', function(req, res, next) {
     else{
       //Hashing Password for secure storage
       bcrypt.hash(password,10).then(function(hashedPass){
-        db.run("INSERT INTO users (username, password, city) VALUES (?, ?)",[username,hashedPass, city]);
+        db.run("INSERT INTO users (username, password, city, routeJson) VALUES (?, ?, ?, ?)",[username,hashedPass, city, '{}']);
       }).then(function(){
         res.json({'signup-success': true});
         /*db.all("SELECT * FROM users", function(err, all){

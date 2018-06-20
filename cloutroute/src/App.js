@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import WeatherBar from './components/Weather';
 import Login from './components/Login';
+import Register from './components/Register';
 import axios from "axios";
 // import ReactWeather from 'react-open-weather';
 // import 'react-open-weather/lib/css/ReactWeather.css';
@@ -37,8 +38,9 @@ class App extends Component {
     return (
 
       <div className="App">
+        {/*<Register />
         <Login />
-        {/*<WeatherBar weather={weather} />*/}
+        <WeatherBar weather={weather} />*/}
       </div>
     );
   }
