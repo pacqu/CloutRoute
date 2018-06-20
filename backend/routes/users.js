@@ -18,7 +18,8 @@ db.serialize(function() {
   + "(username TEXT NOT NULL PRIMARY KEY,"
   + "password TEXT NOT NULL,"
   + "city TEXT NOT NULL,"
-  + "routeJson TEXT NOT NULL"
+  + "routeJson TEXT NOT NULL,"
+  + "subwayStopsJson TEXT NOT NULL,"
   + ")");
   /*
   bcrypt.hash('postword',10).then(function(hash){
@@ -75,7 +76,7 @@ router.post('/newuser', function(req, res, next) {
     else{
       //Hashing Password for secure storage
       bcrypt.hash(password,10).then(function(hashedPass){
-        db.run("INSERT INTO users (username, password, city, routeJson) VALUES (?, ?, ?, ?)",[username,hashedPass, city, '{}']);
+        db.run("INSERT INTO users (username, password, city, routeJson, subwayStopsJson) VALUES (?, ?, ?, ?, ?)",[username,hashedPass, city, '{}', '{}']);
       }).then(function(){
         res.json({'signup-success': true});
         /*db.all("SELECT * FROM users", function(err, all){

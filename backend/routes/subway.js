@@ -6,6 +6,13 @@ var mta = new Mta({
   feed_id: 1                  // optional, default = 1
 });
 
+/*
+Functions for:
+- Getting Station Info To Produce Drop Down
+- Adding Station to User => In Users, Need State that holds username
+- Gettin Train Times from Station Infro => Parse through JSON holding station_ids
+*/
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   mta.stop(635).then(function (result) {
