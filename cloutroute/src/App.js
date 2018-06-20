@@ -40,6 +40,7 @@ class App extends Component {
       <div className="App">
         <Entry />
         {/*<WeatherBar weather={weather} />*/}
+        <SubwayArrivals />
       </div>
     );
   }
