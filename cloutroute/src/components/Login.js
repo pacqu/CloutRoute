@@ -6,8 +6,19 @@ class Login extends Component {
      // called when user submits login info
      // sends request to user and waits for response
      handleSubmitLoginInfo(event){
-          console.log("Username: " + this.refs.username_entry.value);
-          console.log("Password: " + this.refs.password_entry.value);
+       var jsonBody = {
+         'username': this.refs.username_entry.value,
+         'password': this.refs.password_entry.value
+       };
+       console.log(jsonBody);
+       fetch('/users/newuser', {
+         method: 'POST',
+         headers: {
+           'Accept': 'application/json',
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(jsonBody)
+       }).then((res) => res.json()).then((data) =>  console.log(data));
      }
 
      render() {
