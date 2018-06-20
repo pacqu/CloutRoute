@@ -1,37 +1,42 @@
 .register {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .input-container {
-     display: flex;
-     flex-direction: column;
-     justify-content: flex-start;
-     align-items: center;
-     height: 300px;
-     width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 300px;
+  width: 500px;
 }
 
 .input-entry-text {
-     font-size: 1.5em;
-     text-align: center;
-     height: 40px;
-     width: 300px;
-     margin: 10px;
+  font-size: 1.5em;
+  text-align: center;
+  height: 40px;
+  width: 300px;
+  margin: 10px;
+}
+
+.input-entry-text::placeholder {
+  font-size: 1.2em;
+  color: lightgrey;
 }
 
 .input-entry-text:focus {
-    background-color: powderblue;
+  background-color: powderblue;
 }
 
 #submit-button {
-     font-size: 1.5em;
-     text-align: center;
-     background-color: blue;
-     border: 2px solid black;
-     height: 50px;
-     width: 100px;
-     margin: 10px;
+  font-size: 1.5em;
+  text-align: center;
+  background-color: blue;
+  border: 2px solid black;
+  height: 50px;
+  width: 100px;
+  margin: 10px;
 }
