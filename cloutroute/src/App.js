@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import WeatherBar from './components/Weather';
+import Login from './components/Login';
 import axios from "axios";
 // import ReactWeather from 'react-open-weather';
 // import 'react-open-weather/lib/css/ReactWeather.css';
@@ -36,7 +37,8 @@ class App extends Component {
    const weather = this.state.weather;
     return (
       <div className="App">
-        <WeatherBar weather={weather} />
+        <Login />
+        {/*<WeatherBar weather={weather} />*/}
       </div>
     );
   }

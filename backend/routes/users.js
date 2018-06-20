@@ -66,7 +66,7 @@ router.post('/newuser', function(req, res, next) {
   userExists(username, function(result){
     //Username Doesn't Already Exist
     if (result){
-      res.send('user already exists')
+      res.json({'signup-success': false});
     }
     //User Doesn't Exist
     else{
@@ -74,9 +74,10 @@ router.post('/newuser', function(req, res, next) {
       bcrypt.hash(password,10).then(function(hashedPass){
         db.run("INSERT INTO users (username, password) VALUES (?, ?)",[username,hashedPass]);
       }).then(function(){
-        db.all("SELECT * FROM users", function(err, all){
+        res.json({'signup-success': true});
+        /*db.all("SELECT * FROM users", function(err, all){
           res.send(all);
-        });
+        }); */
       });
     }
   });
@@ -87,7 +88,7 @@ router.post('/verifyuser', function(req,res,next){
   var username = req.body.username;
   var password = req.body.password;
   userPassExists(username,password,function(result){
-    res.send(result);
+    res.json({'login-success': result});
   });
 });
 
