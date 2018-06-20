@@ -7,16 +7,6 @@
      background: linear-gradient( rgb(235,178,153), rgb(135,178,153) );
 }
 
-.logo-container {
-     height: 25%;
-}
-
-#logo-graphic {
-     display: block;
-     max-height: 300px;
-     max-width: 200px;
-}
-
 .input-container {
      display: flex;
      flex-direction: column;

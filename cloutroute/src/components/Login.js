@@ -13,9 +13,6 @@ class Login extends Component {
      render() {
           return (
                <div className="login">
-                    <div className="logo-container">
-                         <img id="logo-graphic" src="clout_route_logo.png"/>
-                    </div>
                     <div className="input-container">
                          <div className="username-input-container">
                               <input className="input-entry-text" ref="username_entry" id="username_entry" type="text"/>
