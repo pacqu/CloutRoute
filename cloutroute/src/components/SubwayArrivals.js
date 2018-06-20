@@ -14,7 +14,6 @@ class SubwayArrivals extends Component {
     return (
       <div className="component-container">
         <div id="component-header">
-
         </div>
         <div id="component-content">
 
@@ -24,3 +23,5 @@ class SubwayArrivals extends Component {
   }
 
 }
+
+export default SubwayArrivals;
