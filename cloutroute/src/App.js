@@ -3,7 +3,6 @@ import './App.css';
 import WeatherBar from './components/Weather';
 import Login from './components/Login';
 import Register from './components/Register';
-import Register from './components/Register'
 import axios from "axios";
 // import ReactWeather from 'react-open-weather';
 // import 'react-open-weather/lib/css/ReactWeather.css';
