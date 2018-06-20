@@ -25,19 +25,20 @@ class Login extends Component {
           return (
                <div className="login">
                     <div className="logo-container">
-                         <img src="clout_route_logo-01.png"/>
+                         <img id="logo-graphic" src="clout_route_logo.png"/>
                     </div>
                     <div className="input-container">
                          <div className="username-input-container">
-                              <input ref="username_entry" id="username_entry" type="text"/>
+                              <input className="input-entry-text" ref="username_entry" id="username_entry" type="text"/>
                          </div>
                          <div className="password-input-container">
-                              <input ref="password_entry" id="password_entry" type="password"/>
+                              <input className="input-entry-text" ref="password_entry" id="password_entry" type="password"/>
                          </div>
                          <div className="submit-button-container">
-                              <input id="submit_button" type="button" value="Log In"
-                                   onClick={this.handleSubmitLoginInfo.bind(this)}
-                              />
+                              <button id="submit-button" type="button"
+                                   onClick={this.handleSubmitLoginInfo.bind(this)}>
+                                   Log In
+                              </button>
                          </div>
                     </div>
                </div>
