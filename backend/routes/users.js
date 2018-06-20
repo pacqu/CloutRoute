@@ -13,11 +13,13 @@ const bcrypt = require('bcrypt');
 
 //Initializing DB if necessary
 db.serialize(function() {
+  db.run("DROP TABLE IF EXISTS users");
   db.run("CREATE TABLE IF NOT EXISTS users"
   + "(username TEXT NOT NULL PRIMARY KEY,"
-  + "password TEXT NOT NULL"
+  + "password TEXT NOT NULL,"
+  + "city TEXT NOT NULL,"
+  + "routeJson TEXT NOT NULL"
   + ")");
-  db.run("DELETE from users");
   /*
   bcrypt.hash('postword',10).then(function(hash){
     db.run("INSERT INTO users (username, password) VALUES (?, ?)",['Posty',hash]);
@@ -62,6 +64,7 @@ router.post('/newuser', function(req, res, next) {
   //console.log(req.body);
   var username = req.body.username;
   var password = req.body.password;
+  var city = req.body.city;
   //Check if username already exists
   userExists(username, function(result){
     //Username Doesn't Already Exist
@@ -72,7 +75,7 @@ router.post('/newuser', function(req, res, next) {
     else{
       //Hashing Password for secure storage
       bcrypt.hash(password,10).then(function(hashedPass){
-        db.run("INSERT INTO users (username, password) VALUES (?, ?)",[username,hashedPass]);
+        db.run("INSERT INTO users (username, password, city, routeJson) VALUES (?, ?, ?, ?)",[username,hashedPass, city, '{}']);
       }).then(function(){
         res.json({'signup-success': true});
         /*db.all("SELECT * FROM users", function(err, all){

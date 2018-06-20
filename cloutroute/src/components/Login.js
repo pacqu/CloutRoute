@@ -11,7 +11,7 @@ class Login extends Component {
          'password': this.refs.password_entry.value
        };
        console.log(jsonBody);
-       fetch('/users/newuser', {
+       fetch('/users/verifyuser', {
          method: 'POST',
          headers: {
            'Accept': 'application/json',
@@ -24,15 +24,12 @@ class Login extends Component {
      render() {
           return (
                <div className="login">
-                    <div className="logo-container">
-                         <img id="logo-graphic" src="clout_route_logo.png"/>
-                    </div>
                     <div className="input-container">
                          <div className="username-input-container">
-                              <input className="input-entry-text" ref="username_entry" id="username_entry" type="text"/>
+                              <input className="input-entry-text" placeholder="username" ref="username_entry" id="username_entry" type="text"/>
                          </div>
                          <div className="password-input-container">
-                              <input className="input-entry-text" ref="password_entry" id="password_entry" type="password"/>
+                              <input className="input-entry-text" placeholder="password" ref="password_entry" id="password_entry" type="password"/>
                          </div>
                          <div className="submit-button-container">
                               <button id="submit-button" type="button"
