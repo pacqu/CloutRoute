@@ -10,7 +10,7 @@ var mta = new Mta({
 Functions for:
 - Getting Station Info To Produce Drop Down - DONE
 - Adding Station to User => In Users, Need State that holds username  - DONE
-- Gettin Train Times from Station => Parse through JSON holding station_ids (Get all info associated with user) - NOT DONE
+- Gettin Train Times from Station => Parse through JSON holding station_ids (Get all info associated with user) - DONE
 */
 
 router.get('/allstops', function(req, res, next) {
@@ -23,6 +23,13 @@ router.get('/stop/:stop_id', function(req, res, next) {
   console.log(req.params.stop_id);
   mta.stop(req.params.stop_id).then(function (result) {
     res.json(result);
+  });
+});
+
+router.get('/schedule/:stop_id', function(req, res, next) {
+  console.log(req.params.stop_id);
+  mta.schedule(req.params.stop_id).then(function (result) {
+    res.json(result["schedule"][req.params.stop_id]);
   });
 });
 
