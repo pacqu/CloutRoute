@@ -6,7 +6,7 @@ class SubwayArrivals extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stationID: this.props.stationInfoFromApp.stationID
+      //stationID: this.props.stationInfoFromApp.stationID
     };
   }
 
@@ -14,7 +14,6 @@ class SubwayArrivals extends Component {
     return (
       <div className="component-container">
         <div id="component-header">
-
         </div>
         <div id="component-content">
 
@@ -24,3 +23,5 @@ class SubwayArrivals extends Component {
   }
 
 }
+
+export default SubwayArrivals;
