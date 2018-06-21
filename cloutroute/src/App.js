@@ -50,7 +50,7 @@ class App extends Component {
       <div className="App">
         <Register />
         {/*<WeatherBar weather={weather} />*/}
-        {this.state && this.state.subwayStops && <SubwaySetup subwayStopsJson={subwayStops} /> }
+        {this.state && this.state.subwayStops && <SubwaySetup subwayStopsJson={subwayStops} />}
       </div>
     );
   }

@@ -8,13 +8,20 @@ var mta = new Mta({
 
 /*
 Functions for:
-- Getting Station Info To Produce Drop Down
-- Adding Station to User => In Users, Need State that holds username
-- Gettin Train Times from Station Infro => Parse through JSON holding station_ids
+- Getting Station Info To Produce Drop Down - DONE
+- Adding Station to User => In Users, Need State that holds username  - HALF DONE
+- Gettin Train Times from Station => Parse through JSON holding station_ids - NOT DONE
 */
 
 router.get('/allstops', function(req, res, next) {
   mta.stop().then(function (result) {
+    res.json(result);
+  });
+});
+
+router.get('/stop/:stop_id', function(req, res, next) {
+  console.log(req.params.stop_id);
+  mta.stop(req.params.stop_id).then(function (result) {
     res.json(result);
   });
 });

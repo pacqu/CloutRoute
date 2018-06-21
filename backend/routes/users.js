@@ -96,6 +96,12 @@ router.post('/verifyuser', function(req,res,next){
   });
 });
 
+router.post('/addstop', function(req, res, next) {
+  //JSON posted should contain username (maybe pass?) and stop_id
+  //Get existing JSON Array and add id to it
+  db.run("UPDATE users SET subwayStopsJson=? WHERE username",[updateStopJson, username])
+});
+
 //HANDLE CLOSING DB ON CLOSING APP
 process.stdin.resume();//so the program will not close instantly
 

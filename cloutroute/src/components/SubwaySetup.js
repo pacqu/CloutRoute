@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import './SubwayArrivals.css';
 
 class SubwaySetup extends Component {
@@ -8,6 +9,12 @@ class SubwaySetup extends Component {
     this.state = {
       allStations: this.props.subwayStopsJson
     };
+  }
+  handleSubmitSubwayStation(event){
+    console.log("Station" + this.refs.stop_to_add.value);
+    axios.get("/subway/stop/" + this.refs.stop_to_add.value).then(
+      res => console.log(res.data)
+    );
   }
   componentDidMount(){
     const allStations = this.state.allStations;
@@ -35,9 +42,13 @@ class SubwaySetup extends Component {
         Stops:
         </div>
         <div id="component-content">
-        <select name="stop_to_add">
+        <select ref="stop_to_add">
         {stationOptions}
         </select>
+        <button id="subway-submit-button" type="button"
+        onClick={this.handleSubmitSubwayStation.bind(this)}>
+        Register
+        </button>
         </div>
       </div>
     );
