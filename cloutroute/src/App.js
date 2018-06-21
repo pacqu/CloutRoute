@@ -3,8 +3,11 @@ import './App.css';
 import WeatherBar from './components/Weather';
 import Login from './components/Login';
 import Register from './components/Register';
+
 import SubwayArrivals from './components/SubwayArrivals';
 import SubwaySetup from './components/SubwaySetup';
+
+import Entry from './components/Entry';
 import axios from "axios";
 // import ReactWeather from 'react-open-weather';
 // import 'react-open-weather/lib/css/ReactWeather.css';
@@ -46,9 +49,8 @@ class App extends Component {
    const weather = this.state.weather;
    const subwayStops = this.state.subwayStops;
     return (
-
       <div className="App">
-        <Register />
+        <Entry />
         {/*<WeatherBar weather={weather} />*/}
         {this.state && this.state.subwayStops && <SubwaySetup subwayStopsJson={subwayStops} />}
       </div>
