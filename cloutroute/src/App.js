@@ -41,8 +41,8 @@ class App extends Component {
       this.setState({
         subwayStops: res.data
       })
-      console.log(res.data);
-    })
+      //console.log(res.data);
+    });
   }
 
   render() {
@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <div className="App">
         <Entry />
-        {/*<WeatherBar weather={weather} />*/}
+        <SubwayArrivals />
         {this.state && this.state.subwayStops && <SubwaySetup subwayStopsJson={subwayStops} />}
       </div>
     );
