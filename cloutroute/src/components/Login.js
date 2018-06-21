@@ -28,6 +28,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
+        <h6>{this.props.message}</h6>
         <div className="input-container">
           <div className="username-input-container">
             <input className="input-entry-text" placeholder="username" ref="username_entry" id="username_entry" type="text"/>

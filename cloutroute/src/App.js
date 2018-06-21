@@ -26,7 +26,8 @@ class App extends Component {
     axios.get(subwayStations)
     .then(res => {
       this.setState({
-        subwayStops: res.data
+        subwayStops: res.data,
+        message: ""
       })
       //console.log(res.data);
     });
@@ -35,19 +36,39 @@ class App extends Component {
   // callback function
   // login passes information back to app upon successful login
   loginCallback = (loginInfo) => {
-    this.setState({
-      loggedIn: true,
-      loginObject: loginInfo
-    })
-    console.log("Received login data.");
-    console.log(loginInfo);
+    if (loginInfo["login-failure"]){
+      this.setState({
+        message: "Log-In Failed, Please Try Again :("
+      });
+    }
+    else{
+      this.setState({
+        loggedIn: true,
+        loginObject: loginInfo
+      })
+      console.log("Received login data.");
+      console.log(loginInfo);
+    }
+  }
+
+  registerCallback = (registerInfo) => {
+    if(registerInfo['signup-success']){
+      this.setState({
+        message: "Register Success!"
+      });
+    }
+    else{
+      this.setState({
+        message: "Register Failed, Please Try Again :("
+      });
+    }
   }
 
   render() {
    const subwayStops = this.state.subwayStops;
     return (
       <div className="App">
-        {!this.state.loggedIn && <Entry loginFunc={this.loginCallback}/>}
+        {!this.state.loggedIn && <Entry loginFunc={this.loginCallback} registerFunc={this.registerCallback} message={this.state.message}/>}
         {this.state.loggedIn && <Feed loginInfo={this.state.loginObject}/>}
       </div>
     );
