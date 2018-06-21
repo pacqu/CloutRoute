@@ -20,6 +20,9 @@ class Feed extends Component {
   render(){
     return (
       <div className="feed">
+        <div className="header">
+          <img id="header-logo" src="clout_route_logo_horizontal.png"/>
+        </div>
         <div className="weather-bar">
           <WeatherBar city={this.state.city}/>
         </div>
