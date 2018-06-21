@@ -6,7 +6,7 @@ class SubwayArrivals extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stationID: this.props.stationInfoFromApp.stationID
+      //stationID: this.props.stationInfoFromApp.stationID
     };
   }
 

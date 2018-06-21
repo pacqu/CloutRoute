@@ -13,17 +13,12 @@ Functions for:
 - Gettin Train Times from Station Infro => Parse through JSON holding station_ids
 */
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  mta.stop(635).then(function (result) {
-  console.log(result);
+router.get('/allstops', function(req, res, next) {
+  mta.stop().then(function (result) {
+    res.json(result);
+  });
 });
-  // mta.schedule(635, 1).then(function (result) {
-  //   console.log(result.schedule['']);
-  // });
-  /*mta.status('subway').then(function (result) {
-    console.log(result);
-  });*/
-});
+
+//get stop given id
 
 module.exports = router;

@@ -19,7 +19,7 @@ db.serialize(function() {
   + "password TEXT NOT NULL,"
   + "city TEXT NOT NULL,"
   + "routeJson TEXT NOT NULL,"
-  + "subwayStopsJson TEXT NOT NULL,"
+  + "subwayStopsJson TEXT NOT NULL"
   + ")");
   /*
   bcrypt.hash('postword',10).then(function(hash){
