@@ -71,9 +71,9 @@ router.post('/newuser', function(req, res, next) {
         db.run("INSERT INTO users (username, password, city, routeJson, subwayStopsJson) VALUES (?, ?, ?, ?, ?)",[username,hashedPass, city, '[]', '["633"]']);
       }).then(function(){
         //res.json({'signup-success': true});
-        db.all("SELECT * FROM users", function(err, all){
-          res.send(all);
-        });
+        //db.all("SELECT * FROM users", function(err, all){
+          //res.send(all);
+        //});
       });
     }
   });
@@ -84,14 +84,15 @@ router.post('/verifyuser', function(req,res,next){
   var username = req.body.username;
   var password = req.body.password;
   userPassExists(username,password,function(result){
-    res.json({'login-success': result});
+    console.log({'login-success': result});
+    db.get("SELECT username,city,routeJson,subwayStopsJson FROM users WHERE username=?",[username],function(err,user){
+      res.send(user);
+    });
   });
 });
 
 function getUsersStopJson(username, callback){
   db.get("SELECT subwayStopsJson FROM users WHERE username=?",[username], function(err,res){
-    //console.log("looking for username: " + username)
-    //console.log(JSON.parse(res.subwayStopsJson));
     if (callback) callback(JSON.parse(res.subwayStopsJson));
     return JSON.parse(res.subwayStopsJson);
   })
