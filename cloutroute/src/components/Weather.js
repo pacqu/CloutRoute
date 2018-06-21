@@ -17,13 +17,13 @@ NEED TO ADD CSS ICONS
   constructor(props){
     super(props);
     this.state = {
-      country: ',us',
-      city: props.city
+      city: props.city,
+      country: ',us'
+
     }
 
   }
   componentDidMount(){
-    // console.log("weather", weather);
     const WEATHER_API_KEY = 'cfd81373d0a942ac745fc27d11206173';
     let weather = "https://api.openweathermap.org/data/2.5/weather?q=" + this.state.city + this.state.country+ "&appid=" + WEATHER_API_KEY;
     axios.get(weather)
@@ -34,11 +34,15 @@ NEED TO ADD CSS ICONS
        console.log("response", res)
     });
   }
-
+  /* weather, main, min, precip are set to an empty string
+    until the API call is complete, ensuring that the render
+    does not fail
+  */
   render(){
    const weather = (this.state.weather)? this.state.weather : null ;
-   const max = (weather)? this.state.weather.main.temp_max : ""
-   const min = (weather)? this.state.weather.main.temp_min : ""
+   const max = (weather)? this.state.weather.main.temp_max : "";
+   const min = (weather)? this.state.weather.main.temp_min : "";
+   const precip = (this.state.weather)? this.state.weather.weather[0].main : "";
    console.log("weather", weather)
     return (
       <div className="Weather">
@@ -47,10 +51,10 @@ NEED TO ADD CSS ICONS
             <br />
             Expected Maximum: {((max * 1) * 9/5 - 459.67).toFixed(2)}
             <br />
-          {/*  <i className={
+            <i className={
               (precip ==='Thunderstorm' || precip === 'Drizzle' || precip==='Snow')?
-               "wi wi-umbrella" : "wi wi-forecast-io-clear-day:before"}>
-            </i>*/}
+                "wi wi-umbrella" : "wi wi-forecast-io-clear-day:before"}>
+            </i>
           </div>
         </div>
     );
