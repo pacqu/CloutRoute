@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import './Weather.css';
 import './weather-icons-master/css/weather-icons.css';
 
@@ -9,8 +10,30 @@ the low and high, and based on the precipitation
 indicate which icon should be shown
 NEED TO ADD CSS ICONS
 */
+const WEATHER_API_KEY = 'cfd81373d0a942ac745fc27d11206173';
+class WeatherBar extends Component{
+  //the state will contain a weather object returned from API
+  constructor(props){
+    super(props);
+    this.state = {
+      city: '',
+      country = ',us'
+    }
+  }
+  //BELOW COPIED FROM APP.JS
+  let weather = "https://api.openweathermap.org/data/2.5/weather?q=" + this.state.city + this.state.country + "&appid=" + WEATHER_API_KEY;
+  componentDidMount(){
+    console.log("weather", weather);
+    axios.get(weather)
+    .then(res => {
+      this.setState({
+        weather: res.data
+      })
+      console.log("response", res)
+    });
+  }
 
-const WeatherBar = ({weather}) => {
+
   if (!weather){
     return <div> Loading...</div>
   }
