@@ -53,7 +53,7 @@ NEED TO ADD CSS ICONS
             <br />
             <i className={
               (precip ==='Thunderstorm' || precip === 'Drizzle' || precip==='Snow')?
-                "wi wi-umbrella" : "wi wi-forecast-io-clear-day:before"}>
+                "wi wi-umbrella" : "wi wi-wu-mostlysunny"}>
             </i>
           </div>
         </div>
