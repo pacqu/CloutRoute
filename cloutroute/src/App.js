@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import WeatherBar from './components/Weather';
-import Login from './components/Login';
-import Register from './components/Register';
+import Entry from './components/Entry';
+import Feed from './components/Feed';
 
 import SubwayArrivals from './components/SubwayArrivals';
 import SubwaySetup from './components/SubwaySetup';
 
-import Entry from './components/Entry';
+
 import axios from "axios";
 // import ReactWeather from 'react-open-weather';
 // import 'react-open-weather/lib/css/ReactWeather.css';
@@ -20,7 +20,9 @@ let subwayStations = "/subway/allstops"
 class App extends Component {
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      loggedIn: false
+    };
   }
 
   /* Calls the Weather API and sets state to
@@ -45,14 +47,25 @@ class App extends Component {
     })
   }
 
+  // callback function
+  // login passes information back to app upon successful login
+  loginCallback = (loginInfo) => {
+    this.setState({
+      loggedIn: true,
+      loginObject: loginInfo
+    })
+    console.log("Received login data.");
+    console.log(loginInfo);
+  }
+
   render() {
    const weather = this.state.weather;
    const subwayStops = this.state.subwayStops;
     return (
       <div className="App">
-        <Entry />
+        {!this.state.loggedIn && <Entry loginFunc={this.loginCallback}/>}
         {/*<WeatherBar weather={weather} />*/}
-        {this.state && this.state.subwayStops && <SubwaySetup subwayStopsJson={subwayStops} />}
+        {this.state.loggedIn && <Feed loginInfo={this.state.loginObject}/>}
       </div>
     );
   }
