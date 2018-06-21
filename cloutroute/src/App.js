@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import WeatherBar from './components/Weather';
-import Login from './components/Login';
-import Register from './components/Register';
+import Entry from './components/Entry';
+import Feed from './components/Feed';
 
 import SubwayArrivals from './components/SubwayArrivals';
 import SubwaySetup from './components/SubwaySetup';
 
-import Entry from './components/Entry';
+
 import axios from "axios";
 // import ReactWeather from 'react-open-weather';
 // import 'react-open-weather/lib/css/ReactWeather.css';
@@ -65,7 +65,7 @@ class App extends Component {
       <div className="App">
         {!this.state.loggedIn && <Entry loginFunc={this.loginCallback}/>}
         {/*<WeatherBar weather={weather} />*/}
-        {this.state && this.state.subwayStops && <SubwaySetup subwayStopsJson={subwayStops} />}
+        {this.state.loggedIn && <Feed loginInfo={this.state.loginObject}/>}
       </div>
     );
   }

@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt');
 
 //Initializing DB if necessary
 db.serialize(function() {
-  db.run("DROP TABLE IF EXISTS users");
+  //db.run("DROP TABLE IF EXISTS users");
   db.run("CREATE TABLE IF NOT EXISTS users"
   + "(username TEXT NOT NULL PRIMARY KEY,"
   + "password TEXT NOT NULL,"
