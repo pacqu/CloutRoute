@@ -21,14 +21,6 @@ db.serialize(function() {
   + "routeJson TEXT NOT NULL,"
   + "subwayStopsJson TEXT NOT NULL"
   + ")");
-  /*
-  bcrypt.hash('postword',10).then(function(hash){
-    db.run("INSERT INTO users (username, password) VALUES (?, ?)",['Posty',hash]);
-  }).then(function(){
-    db.each("SELECT * FROM users", function(err,row){
-      console.log(row);
-    });
-  });*/
 });
 
 //Function Checks if User with Given Username Already Exists
@@ -62,7 +54,7 @@ function userPassExists(username, unhashedpass, callback){
 }
 /* Function to Register User into User Database*/
 router.post('/newuser', function(req, res, next) {
-  //console.log(req.body);
+  console.log(req.body);
   var username = req.body.username;
   var password = req.body.password;
   var city = req.body.city;
@@ -76,12 +68,12 @@ router.post('/newuser', function(req, res, next) {
     else{
       //Hashing Password for secure storage
       bcrypt.hash(password,10).then(function(hashedPass){
-        db.run("INSERT INTO users (username, password, city, routeJson, subwayStopsJson) VALUES (?, ?, ?, ?, ?)",[username,hashedPass, city, '{}', '{}']);
+        db.run("INSERT INTO users (username, password, city, routeJson, subwayStopsJson) VALUES (?, ?, ?, ?, ?)",[username,hashedPass, city, '[]', '["633"]']);
       }).then(function(){
-        res.json({'signup-success': true});
-        /*db.all("SELECT * FROM users", function(err, all){
+        //res.json({'signup-success': true});
+        db.all("SELECT * FROM users", function(err, all){
           res.send(all);
-        }); */
+        });
       });
     }
   });
@@ -96,10 +88,35 @@ router.post('/verifyuser', function(req,res,next){
   });
 });
 
+function getUsersStopJson(username, callback){
+  db.get("SELECT subwayStopsJson FROM users WHERE username=?",[username], function(err,res){
+    //console.log("looking for username: " + username)
+    //console.log(JSON.parse(res.subwayStopsJson));
+    if (callback) callback(JSON.parse(res.subwayStopsJson));
+    return JSON.parse(res.subwayStopsJson);
+  })
+}
+
+function addStop(stopArray, newStop){
+  stopArray.push(newStop);
+  console.log(stopArray);
+  return stopArray
+}
+
 router.post('/addstop', function(req, res, next) {
-  //JSON posted should contain username (maybe pass?) and stop_id
-  //Get existing JSON Array and add id to it
-  db.run("UPDATE users SET subwayStopsJson=? WHERE username",[updateStopJson, username])
+  //JSON posted should contain username and stop_id
+  var username = req.body.username;
+  var stop_id = req.body.stop_id;
+  getUsersStopJson(username, function(result){
+    db.run("UPDATE users SET subwayStopsJson=? WHERE username=?",[JSON.stringify(addStop(result, stop_id)), username], function(err,not_used_res){
+      res.json({'add-station-success': true});
+      //console.log(not_used_res);
+      /*
+      db.all("SELECT * FROM users", function(err, all){
+        res.send(all);
+      });*/
+    })
+  })
 });
 
 //HANDLE CLOSING DB ON CLOSING APP

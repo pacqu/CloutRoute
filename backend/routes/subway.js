@@ -9,8 +9,8 @@ var mta = new Mta({
 /*
 Functions for:
 - Getting Station Info To Produce Drop Down - DONE
-- Adding Station to User => In Users, Need State that holds username  - HALF DONE
-- Gettin Train Times from Station => Parse through JSON holding station_ids - NOT DONE
+- Adding Station to User => In Users, Need State that holds username  - DONE
+- Gettin Train Times from Station => Parse through JSON holding station_ids (Get all info associated with user) - NOT DONE
 */
 
 router.get('/allstops', function(req, res, next) {
