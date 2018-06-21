@@ -5,7 +5,7 @@ class Register extends Component {
 
      // called when user submits registration
      // sends request to user and waits for response
-     handleSubmitLoginInfo(event){
+     handleSubmitRegisterInfo(event){
           console.log("Username: " + this.refs.username_entry.value);
           console.log("Password: " + this.refs.password_entry.value);
           console.log("City: " + this.refs.city_entry.value);
@@ -22,13 +22,14 @@ class Register extends Component {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(jsonBody)
-          }).then((res) => res.json()).then((data) =>  console.log(data));
+          }).then((res) => res.json()).then((data) => this.props.registerFunc(data));
      }
 
      render() {
           return (
                <div className="register">
-                    <div className="input-container">
+                 <h6>{this.props.message}</h6>
+                 <div className="input-container">
                          <div className="username-input-container">
                               <input className="input-entry-text" placeholder="username" ref="username_entry" id="username_entry" type="text"/>
                          </div>
@@ -40,7 +41,7 @@ class Register extends Component {
                          </div>
                          <div className="submit-button-container">
                               <button id="submit-button" type="button"
-                                   onClick={this.handleSubmitLoginInfo.bind(this)}>
+                                   onClick={this.handleSubmitRegisterInfo.bind(this)}>
                                    Register
                               </button>
                          </div>

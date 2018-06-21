@@ -43,7 +43,7 @@ class Entry extends Component {
             <img id="logo-graphic" src="clout_route_logo.png"/>
           </div>
           <div className="register-container">
-            <Register/>
+            <Register registerFunc={this.props.registerFunc} message={this.props.message}/>
           </div>
         </div>
       );
@@ -64,7 +64,7 @@ class Entry extends Component {
             <img id="logo-graphic" src="clout_route_logo.png"/>
           </div>
           <div className="login-container">
-            <Login loginFunc={this.props.loginFunc}/>
+            <Login loginFunc={this.props.loginFunc} message={this.props.message}/>
           </div>
         </div>
       );

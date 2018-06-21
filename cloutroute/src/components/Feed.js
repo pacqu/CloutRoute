@@ -4,7 +4,7 @@ import './Feed.css';
 import WeatherBar from './Weather';
 import SubwayArrivals from './SubwayArrivals';
 import SubwaySetup from './SubwaySetup';
-
+import axios from "axios";
 class Feed extends Component {
 
   constructor(props){
@@ -17,7 +17,18 @@ class Feed extends Component {
     }
   }
 
+  componentDidMount(){
+  axios.get("/subway/allstops")
+    .then(res => {
+      this.setState({
+        allStations: res.data
+      })
+      console.log(res.data);
+    })
+  }
+
   render(){
+    console.log(this.state.subways);
     return (
       <div className="feed">
         <div className="header">
@@ -28,7 +39,9 @@ class Feed extends Component {
         </div>
         <div className="subway-scroll-container">
           <div className="subway-stops-container">
-            <div className="subway-stop-widget-container"></div>
+            <div className="subway-stop-widget-container">
+              {this.state && this.state.allStations && <SubwaySetup subwayStopsJson={this.state.allStations} />}
+            </div>
             <div className="subway-stop-widget-container"></div>
             <div className="subway-stop-widget-container"></div>
             <div className="subway-stop-widget-container"></div>
