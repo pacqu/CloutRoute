@@ -28,7 +28,7 @@ class RouteForm extends Component {
   }
   render(){
     return (
-      <div className="user-route-input">
+      <div className="user-route-input-container">
         <div className="instructions">
           Please enter the origin and destination in the following format:
           <br />
@@ -36,6 +36,7 @@ class RouteForm extends Component {
         </div>
         <br />
         <form onSubmit={this.handleSubmit}>
+        <div className="user-route-input">
           <label>
             Origin:
             <input
@@ -45,12 +46,13 @@ class RouteForm extends Component {
           </label>
           <br />
           <label>
-            Destination
+            Destination:
             <input
               name="destination"
               type="text"
               onChange={this.handleInputChange} />
             </label>
+            </div>
             <div className="submit-button-container">
                  <button id="submit-button" type="button"
                       onClick={this.handleSubmit.bind(this)}>
