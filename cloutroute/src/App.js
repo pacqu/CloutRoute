@@ -28,8 +28,8 @@ class App extends Component {
       this.setState({
         subwayStops: res.data
       })
-      console.log(res.data);
-    })
+      //console.log(res.data);
+    });
   }
 
   // callback function
@@ -48,7 +48,6 @@ class App extends Component {
     return (
       <div className="App">
         {!this.state.loggedIn && <Entry loginFunc={this.loginCallback}/>}
-        {/*<WeatherBar weather={weather} />*/}
         {this.state.loggedIn && <Feed loginInfo={this.state.loginObject}/>}
       </div>
     );
