@@ -6,17 +6,26 @@ var mta = new Mta({
   feed_id: 1                  // optional, default = 1
 });
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  mta.stop(635).then(function (result) {
-  console.log(result);
+/*
+Functions for:
+- Getting Station Info To Produce Drop Down - DONE
+- Adding Station to User => In Users, Need State that holds username  - DONE
+- Gettin Train Times from Station => Parse through JSON holding station_ids (Get all info associated with user) - NOT DONE
+*/
+
+router.get('/allstops', function(req, res, next) {
+  mta.stop().then(function (result) {
+    res.json(result);
+  });
 });
-  // mta.schedule(635, 1).then(function (result) {
-  //   console.log(result.schedule['']);
-  // });
-  /*mta.status('subway').then(function (result) {
-    console.log(result);
-  });*/
+
+router.get('/stop/:stop_id', function(req, res, next) {
+  console.log(req.params.stop_id);
+  mta.stop(req.params.stop_id).then(function (result) {
+    res.json(result);
+  });
 });
+
+//get stop given id
 
 module.exports = router;
