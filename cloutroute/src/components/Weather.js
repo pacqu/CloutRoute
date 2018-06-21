@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from "axios";
+import ReactWeather from 'react-open-weather';
 import './Weather.css';
 import './weather-icons-master/css/weather-icons.css';
 
@@ -10,30 +12,53 @@ indicate which icon should be shown
 NEED TO ADD CSS ICONS
 */
 
-const WeatherBar = ({weather}) => {
-  if (!weather){
-    return <div> Loading...</div>
+
+ class WeatherBar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      city: props.city,
+      country: ',us'
+
+    }
+
   }
-  const min = (weather.main.temp_min * 1) * 9/5 - 459.67;
-  const max = (weather.main.temp_max * 1) * 9/5 - 459.67;
-  const precip = weather.weather[0].main;
-  console.log("inside weather: ",weather);
-
-  return (
-    <div className="Weather">
-      <div className="Weather-header">
-        Expected Minimum: {min.toFixed(2)}
-        <br />
-        Expected Maximum: {max.toFixed(2)}
-        <br />
-        <i className={
-          (precip ==='Clear' || precip==='Clouds')?
-          "wi wi-umbrella" : "wi wi-forecast-io-clear-day:before"}>
-        </i>
-      </div>
-    </div>
-
-  )
+  componentDidMount(){
+    const WEATHER_API_KEY = 'cfd81373d0a942ac745fc27d11206173';
+    let weather = "https://api.openweathermap.org/data/2.5/weather?q=" + this.state.city + this.state.country+ "&appid=" + WEATHER_API_KEY;
+    axios.get(weather)
+    .then(res => {
+      this.setState({
+        weather: res.data
+      })
+       console.log("response", res)
+    });
+  }
+  /* weather, main, min, precip are set to an empty string
+    until the API call is complete, ensuring that the render
+    does not fail
+  */
+  render(){
+   const weather = (this.state.weather)? this.state.weather : null ;
+   const max = (weather)? this.state.weather.main.temp_max : "";
+   const min = (weather)? this.state.weather.main.temp_min : "";
+   const precip = (this.state.weather)? this.state.weather.weather[0].main : "";
+   console.log("weather", weather)
+    return (
+      <div className="Weather">
+        <div className="Weather-header">
+            Expected Minimum: {((min * 1) * 9/5 - 459.67).toFixed(2)}
+            <br />
+            Expected Maximum: {((max * 1) * 9/5 - 459.67).toFixed(2)}
+            <br />
+            <i className={
+              (precip ==='Thunderstorm' || precip === 'Drizzle' || precip==='Snow')?
+                "wi wi-umbrella" : "wi wi-wu-mostlysunny"}>
+            </i>
+          </div>
+        </div>
+    );
+  }
 }
 
 export default WeatherBar;

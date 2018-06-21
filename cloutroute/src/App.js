@@ -1,41 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
 import WeatherBar from './components/Weather';
-import Login from './components/Login';
-import Register from './components/Register';
+import Entry from './components/Entry';
+import Feed from './components/Feed';
 
 import SubwayArrivals from './components/SubwayArrivals';
 import SubwaySetup from './components/SubwaySetup';
 
-import Entry from './components/Entry';
-import axios from "axios";
-// import ReactWeather from 'react-open-weather';
-// import 'react-open-weather/lib/css/ReactWeather.css';
 
-const WEATHER_API_KEY = 'cfd81373d0a942ac745fc27d11206173';
-const country = ",us"
-const city = "Port Chester"
-let weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + country + "&appid=" + WEATHER_API_KEY;
+import axios from "axios";
+
 let subwayStations = "/subway/allstops"
 class App extends Component {
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      loggedIn: false
+    };
   }
 
   /* Calls the Weather API and sets state to
   the data object.
   */
   componentDidMount(){
-    console.log("weather", weather);
-    axios.get(weather)
-    .then(res => {
-      this.setState({
-        // weather:res.data.main
-        weather: res.data
-      })
-      console.log("response", res)
-    });
     axios.get(subwayStations)
     .then(res => {
       this.setState({
@@ -45,14 +32,23 @@ class App extends Component {
     });
   }
 
+  // callback function
+  // login passes information back to app upon successful login
+  loginCallback = (loginInfo) => {
+    this.setState({
+      loggedIn: true,
+      loginObject: loginInfo
+    })
+    console.log("Received login data.");
+    console.log(loginInfo);
+  }
+
   render() {
-   const weather = this.state.weather;
    const subwayStops = this.state.subwayStops;
     return (
       <div className="App">
-        <Entry />
-        <SubwayArrivals />
-        {this.state && this.state.subwayStops && <SubwaySetup subwayStopsJson={subwayStops} />}
+        {!this.state.loggedIn && <Entry loginFunc={this.loginCallback}/>}
+        {this.state.loggedIn && <Feed loginInfo={this.state.loginObject}/>}
       </div>
     );
   }
