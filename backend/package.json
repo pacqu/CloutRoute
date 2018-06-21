@@ -13,7 +13,7 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "mta-gtfs": "^1.1.0",
+    "mta-gtfs": "file:mta-gtfs",
     "sqlite3": "^4.0.0"
   }
 }

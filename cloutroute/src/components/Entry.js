@@ -6,8 +6,8 @@ import Login from './Login.js';
 
 class Entry extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       newuser: false
     };
@@ -64,7 +64,7 @@ class Entry extends Component {
             <img id="logo-graphic" src="clout_route_logo.png"/>
           </div>
           <div className="login-container">
-            <Login/>
+            <Login loginFunc={this.props.loginFunc}/>
           </div>
         </div>
       );
