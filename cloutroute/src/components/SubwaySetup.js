@@ -7,14 +7,27 @@ class SubwaySetup extends Component {
   constructor(props){
     super(props);
     this.state = {
+      username: this.props.username,
       allStations: this.props.subwayStopsJson
     };
   }
   handleSubmitSubwayStation(event){
     console.log("Station" + this.refs.stop_to_add.value);
-    axios.get("/subway/stop/" + this.refs.stop_to_add.value).then(
-      res => console.log(res.data)
-    );
+    var jsonBody = {
+      'username': this.state.username,
+      'stop_id': this.refs.stop_to_add.value
+    };
+    console.log(jsonBody);
+    fetch('/users/addStop', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonBody)
+    }).then(axios.get('/users/getuser/' + this.state.username).then(
+      (res) => this.props.updateFunc(res.data) /*res.json()).then((data) => this.props.updateFunc(data)
+    )*/));
   }
   componentDidMount(){
     const allStations = this.state.allStations;

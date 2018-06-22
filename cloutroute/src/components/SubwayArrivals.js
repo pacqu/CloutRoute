@@ -7,7 +7,7 @@ class SubwayArrivals extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stationId: 633, //this.props.stationId
+      stationId: this.props.stationId,
       stationName:"",
       northboundtrains: [], //update on setInterval
       southboundtrains: [] //update on setInterval
