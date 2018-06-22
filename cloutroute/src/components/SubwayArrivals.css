@@ -1,4 +1,4 @@
-.component-container {
+.subway-component-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,6 +16,10 @@
   margin: 0;
 }
 
+.arrivals-container {
+  margin: 5px;
+}
+
 .arrivals-label {
   color: white;
   font-size: 1.1em;
@@ -26,4 +30,14 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.add-subway-component-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #87B2AC;
+  height: 150px;
+  width: 300px;
+  margin: 30px;
 }

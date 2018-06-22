@@ -69,7 +69,7 @@ class SubwayArrivals extends Component {
       return (<li key={i}>{trains.routeId} || Arrival: {southDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
     }
     return (
-      <div className="component-container">
+      <div className="subway-component-container">
         <p className="station-name">
           {stationName}
         </p>
