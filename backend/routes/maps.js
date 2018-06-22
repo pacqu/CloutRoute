@@ -25,6 +25,7 @@ router.post('/getRoute',function(req, res, next) {
             'mode': 'transit'
           }, function(err, response) {
             if (!err) {
+              console.log(response.json);
               res.send(response.json);
             }
             else{

@@ -9,6 +9,7 @@ class SubwayArrivals extends Component {
     this.state = {
       stationId: this.props.stationId,
       stationName:"",
+      trainsScheduled: false,
       northboundtrains: [], //update on setInterval
       southboundtrains: [] //update on setInterval
     };
@@ -22,13 +23,18 @@ class SubwayArrivals extends Component {
       axios.get('/subway/stop/'+ stationId).then(
         res => {
           this.setState({
-            stationName: res.data.daytime_routes + " - " + res.data.stop_name});
+            stationName: res.data.daytime_routes + " - " + res.data.stop_name
+          });
           console.log(this.state.stationName);
         });
     }
     axios.get('/subway/schedule/'+ stationId)
     .then(res => {
+      if (res.noTrainsScheduled){
+        this.setState({trainsScheduled: false});
+      }
       this.setState({
+        trainsScheduled: true,
         northboundtrains: res.data["N"],
         southboundtrains: res.data["S"]
       });
@@ -47,12 +53,13 @@ class SubwayArrivals extends Component {
     const stationName = this.state.stationName;
     const northboundtrains = this.state.northboundtrains;
     const southboundtrains = this.state.southboundtrains;
+    const trainsScheduled = this.state.trainsScheduled;
+    const noneMessage = "No Trains Scheduled At This Time";
     var northList = [];
     var southList = [];
     var stop = "";
     if(northboundtrains !== undefined && northboundtrains.length !== 0){
       northList = northboundtrains.map((trains,i) =>{
-        //CultureInfo culture = new CultureInfo("en-US");
         var northDate = new Date(trains.arrivalTime*1000);
         return (<li key={i}>{trains.routeId} - Arrival: {northDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
     }
@@ -66,14 +73,14 @@ class SubwayArrivals extends Component {
         <h1>{stationName}</h1>
         <div id="Northbound-Trains">
           <ul>
-            Northbound-Trains
-            {northList}
+            Northbound-Trains <br/>
+            {trainsScheduled ? northList : noneMessage}
           </ul>
         </div>
         <div id="Southbound-Trains">
           <ul>
-            Southbound-Trains
-            {southList}
+            Southbound-Trains<br/>
+            {trainsScheduled ? southList : noneMessage}
           </ul>
         </div>
       </div>
