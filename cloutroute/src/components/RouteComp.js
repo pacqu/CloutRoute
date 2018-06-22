@@ -43,22 +43,26 @@ class RouteComp extends Component {
     var routeListings = [];
     if (routes != undefined){
       console.log(routes);
-      routeListings = routes.map((routee,i) => (
-        <div key={i}>
-        Depart At: {routee.legs[0].departure_time.text} <br/>
-        Arrive At: {routee.legs[0].arrival_time.text} <br/>
-        Trip Duration: {routee.legs[0].duration.text} <br/>
+      routeListings = (
+        <div className="route-info">
+          <div className="route-time">
+            Trip Duration: {routes[0].legs[0].duration.text}
+          </div>
+          <div className="route-range">
+            {routes[0].legs[0].departure_time.text}
+            to
+            {routes[0].legs[0].arrival_time.text}
+          </div>
         </div>
-      ))
+      )
     }
     return(
-      <div>
-      <h4>{origin}</h4>
-      <h5>to</h5>
-      <h4>{destination}</h4>
-      <h6>Routes</h6>
-      {routeListings}
-
+      <div className="route-component-container">
+        <p className="place" id="origin">{origin}</p>
+        <p>to</p>
+        <p className="place" id="destination">{destination}</p>
+        <p>Routes</p>
+        {routeListings}
       </div>
     );
   }
