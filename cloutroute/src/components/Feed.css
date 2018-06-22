@@ -29,15 +29,8 @@
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: nowrap;
-  background: linear-gradient(90deg,rgb(11,71,60), rgb(44,59,56) );
+  background: linear-gradient(45deg, rgb(7,5,168), rgb(0,0,0) );
   width: 3000px;
-}
-
-.subway-stop-widget-container {
-  height: 300px;
-  width: 300px;
-  margin: 30px;
-  background-color: blue;
 }
 
 .routes-container {
@@ -63,8 +56,31 @@
 .route-widget-container {
   width: 300px;
   height: 300px;
-  margin: 2.5%;
+  margin: 30px;
   color: white;
-
   background: linear-gradient(45deg, rgba(1,77,20,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+.route-input-box {
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  color: black;
+  font-size: 1.2em;
+}
+
+
+.route-input-box::placeholder {
+  font-size: 1em;
+  color: lightgrey;
+}
+
+#route-submit-button {
+  font-size: 1.5em;
+  text-align: center;
+  background-color: green;
+  border: 2px solid black;
+  height: 40px;
+  width: 100px;
+  margin: 10px;
 }

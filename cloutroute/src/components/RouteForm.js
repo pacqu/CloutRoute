@@ -51,25 +51,27 @@ class RouteForm extends Component {
         <form onSubmit={this.handleSubmit}>
         <div className="user-route-input">
           <label>
-            Origin:
             <input
               name="origin"
+              className="route-input-box"
               ref="origin"
+              placeholder="origin"
               type="text"
               onChange={this.handleInputChange} />
           </label>
           <br />
           <label>
-            Destination:
             <input
               name="destination"
+              className="route-input-box"
               ref="destination"
+              placeholder="destination"
               type="text"
               onChange={this.handleInputChange} />
             </label>
             </div>
             <div className="submit-button-container">
-                 <button id="submit-button" type="button"
+                 <button id="route-submit-button" type="button"
                       onClick={this.handleSubmit.bind(this)}>
                       Submit
                  </button>
