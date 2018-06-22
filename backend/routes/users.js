@@ -124,6 +124,21 @@ router.post('/addstop', function(req, res, next) {
   })
 });
 
+router.get('/getuser/:user', function(req, res, next) {
+  var username = req.params.user;
+  userExists(username, function(result){
+    if(result){
+      db.get("SELECT username,city,routeJson,subwayStopsJson FROM users WHERE username=?",[username],function(err,user){
+        console.log(user);
+        res.send(user);
+      });
+    }
+    else{
+      res.json({'get-user-failure':true})
+    }
+  })
+});
+
 //HANDLE CLOSING DB ON CLOSING APP
 process.stdin.resume();//so the program will not close instantly
 
