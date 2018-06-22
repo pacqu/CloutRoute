@@ -20,9 +20,9 @@ var Mta = module.exports = function (options) {
 
   this.options = options || {};
 
-  _.extend({
+  _.extend(/*{
     feed_id: 1,
-  }, this.options);
+  }*/, this.options);
 
   if (this.options.key === 'your-api-key') {
     this.options.key = null;
@@ -113,6 +113,7 @@ Mta.prototype.schedule = function (stopId, feedId) {
   if (_.isArray(stopId)) {
     stopIds = stopId;
   } else if (_.isNumber(stopId) || _.isString(stopId)) {
+    //console.log("valid stop");
     stopIds = [ stopId ];
   } else {
     throw new Error('invalid stop id(s)');

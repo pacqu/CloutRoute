@@ -68,7 +68,9 @@ router.post('/newuser', function(req, res, next) {
     else{
       //Hashing Password for secure storage
       bcrypt.hash(password,10).then(function(hashedPass){
-        db.run("INSERT INTO users (username, password, city, routeJson, subwayStopsJson) VALUES (?, ?, ?, ?, ?)",[username,hashedPass, city, '[]', '["633"]']);
+        db.run("INSERT INTO users (username, password, city, routeJson, subwayStopsJson) VALUES (?, ?, ?, ?, ?)",[username,hashedPass, city,
+          '[{"origin": "Stuyvesant High School", "destination": "Hunter College"}]',
+          '["633"]']);
       }).then(function(){
         res.json({'signup-success': true});
         //db.all("SELECT * FROM users", function(err, all){
@@ -115,6 +117,37 @@ router.post('/addstop', function(req, res, next) {
   getUsersStopJson(username, function(result){
     db.run("UPDATE users SET subwayStopsJson=? WHERE username=?",[JSON.stringify(addStop(result, stop_id)), username], function(err,not_used_res){
       res.json({'add-station-success': true});
+      //console.log(not_used_res);
+      /*
+      db.all("SELECT * FROM users", function(err, all){
+        res.send(all);
+      });*/
+    })
+  })
+});
+function getRouteJson(username, callback){
+  db.get("SELECT routeJson FROM users WHERE username=?",[username], function(err,res){
+    if (callback) callback(JSON.parse(res.routeJson));
+    return JSON.parse(res.routeJson);
+  })
+}
+
+function addRoute(routeArray, newRoute){
+  stopArray.push(newRoute);
+  console.log(routeArray);
+  return routeArray
+}
+router.post('/addroute', function(req, res, next) {
+  //JSON posted should contain username and stop_id
+  var ori = req.body.origin;
+  var dest= req.body.destination;
+  var username = req.body.username;
+  getRouteJson(username, function(result){
+    db.run("UPDATE users SET routeJson=? WHERE username=?",[JSON.stringify(addStop(result, {
+      origin: ori,
+      destination: dest
+    })), username], function(err,not_used_res){
+      res.json({'add-route-success': true});
       //console.log(not_used_res);
       /*
       db.all("SELECT * FROM users", function(err, all){
