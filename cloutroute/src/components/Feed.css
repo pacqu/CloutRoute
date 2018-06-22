@@ -16,8 +16,7 @@
 }
 
 .weather-bar {
-  background-color: green;
-  height: 100px;
+  height: 80px;
 }
 
 .subway-scroll-container {
@@ -30,8 +29,15 @@
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: nowrap;
-  background-color: yellow;
-  width:auto;
+  background: linear-gradient(rgb(96,127,109) 0%, rgb(0,0,0) 100%);
+  width: 3000px;
+}
+
+.add-subway-stop-widget {
+  height: 300px;
+  width: 300px;
+  margin: 30px;
+  background-color: blue;
 }
 
 .subway-stop-widget-container {
@@ -47,6 +53,10 @@
   align-content: flex-start;
   flex-wrap: wrap;
   background-color: orange;
+}
+
+.add-route-container {
+
 }
 
 .route-widget-container {

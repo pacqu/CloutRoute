@@ -47,10 +47,12 @@ NEED TO ADD CSS ICONS
     return (
       <div className="Weather">
         <div className="Weather-header">
-            Expected Minimum: {((min * 1) * 9/5 - 459.67).toFixed(2)}
-            <br />
-            Expected Maximum: {((max * 1) * 9/5 - 459.67).toFixed(2)}
-            <br />
+            <p className="temperature-display">
+              Low {((min * 1) * 9/5 - 459.67).toFixed(0)}
+            </p>
+            <p className="temperature-display">
+              High {((max * 1) * 9/5 - 459.67).toFixed(0)}
+            </p>
             <i className={
               (precip ==='Thunderstorm' || precip === 'Drizzle' || precip==='Snow')?
                 "wi wi-umbrella" : "wi wi-wu-mostlysunny"}>
