@@ -79,7 +79,11 @@ class Feed extends Component {
           <div className="add-route-widget">
             <RouteForm username={this.state.username} updateFunc={this.userUpdateCallback} />
           </div>
-          {routeComponents}
+
+          {routeComponents}{/*
+          <div className="route-widget-container"></div>
+          <div className="route-widget-container"></div>
+          <div className="route-widget-container"></div>*/}
         </div>
       </div>
     )
