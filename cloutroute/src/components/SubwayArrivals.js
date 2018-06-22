@@ -59,12 +59,12 @@ class SubwayArrivals extends Component {
     var southList = [];
     var stop = "";
     if(northboundtrains !== undefined && northboundtrains.length !== 0){
-      northList = northboundtrains.map((trains,i) =>{
+      northList = northboundtrains.slice(0, 5).map((trains,i) =>{
         var northDate = new Date(trains.arrivalTime*1000);
         return (<li key={i}>{trains.routeId} - Arrival: {northDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
     }
     if(southboundtrains !== undefined && southboundtrains.length !== 0){
-      southList = southboundtrains.map((trains,i) =>{
+      southList = southboundtrains.slice(0, 5).map((trains,i) =>{
         var southDate = new Date(trains.arrivalTime*1000);
       return (<li key={i}>{trains.routeId} - Arrival: {southDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
     }
