@@ -4,6 +4,8 @@ import './Feed.css';
 import WeatherBar from './Weather';
 import SubwayArrivals from './SubwayArrivals';
 import SubwaySetup from './SubwaySetup';
+import RouteForm from './RouteForm';
+import RouteComp from './RouteComp';
 import axios from "axios";
 class Feed extends Component {
 
@@ -40,9 +42,16 @@ class Feed extends Component {
     let subways = this.state.subways;
     var subwayComponents = [];
     if (subways !== undefined && subways.length !== 0){
-      subwayComponents = subways.map((station,i) => (<div className="subway-stop-widget-container">
-      <SubwayArrivals key={i} stationId={station}></SubwayArrivals> </div>))
-      }
+      subwayComponents = subways.map((station,i) => (<div className="subway-stop-widget-container"> <SubwayArrivals key={i} stationId={station}></SubwayArrivals> </div>))
+    }
+    let routes = this.state.routes;
+    var routeComponents = []
+    if (routes !== undefined && routes.length !== 0){
+      routeComponents = routes.map(
+        (route,i) =>
+        (<div className="route-widget-container" ><RouteComp origin={route.origin} destination={route.destination}/></div>)
+      );
+    }
       //console.log(this.state.subways);
       return (
         <div className="feed">
@@ -65,10 +74,13 @@ class Feed extends Component {
           </div>
         </div>
         <div className="routes-container">
+          <div className="route-widget-container">
+            <RouteForm username={this.state.username} updateFunc={this.userUpdateCallback} />
+          </div>
+          {routeComponents}/*
           <div className="route-widget-container"></div>
           <div className="route-widget-container"></div>
-          <div className="route-widget-container"></div>
-          <div className="route-widget-container"></div>
+          <div className="route-widget-container"></div>*/
         </div>
       </div>
     )
