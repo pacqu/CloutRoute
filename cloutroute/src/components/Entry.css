@@ -20,6 +20,15 @@
   height: 45px;
   font-size: 1.5em;
   background-color: blue;
+  border: 2px solid black;
+}
+
+.button#login-button {
+  border-left: none;
+}
+
+.button:focus {
+  background-color: lime;
 }
 
 .logo-container {
