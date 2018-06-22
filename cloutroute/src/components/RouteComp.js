@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import './RouteComp.css';
 
 class RouteComp extends Component {
 
@@ -46,12 +47,15 @@ class RouteComp extends Component {
       routeListings = (
         <div className="route-info">
           <div className="route-time">
-            Trip Duration: {routes[0].legs[0].duration.text}
+            {routes[0].legs[0].duration.text}
           </div>
           <div className="route-range">
-            {routes[0].legs[0].departure_time.text}
-            to
-            {routes[0].legs[0].arrival_time.text}
+            <p>
+              depart at {routes[0].legs[0].departure_time.text}
+            </p>
+            <p>
+              arrive by {routes[0].legs[0].arrival_time.text}
+            </p>
           </div>
         </div>
       )
@@ -61,7 +65,6 @@ class RouteComp extends Component {
         <p className="place" id="origin">{origin}</p>
         <p>to</p>
         <p className="place" id="destination">{destination}</p>
-        <p>Routes</p>
         {routeListings}
       </div>
     );

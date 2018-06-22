@@ -25,7 +25,7 @@ class RouteForm extends Component {
   handleSubmit(event){
     event.preventDefault();
     var jsonBody = {
-      username: "justin",
+      username: this.state.username,
       origin: this.refs.origin.value,
       destination: this.refs.destination.value
     };

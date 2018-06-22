@@ -33,13 +33,6 @@
   width: 3000px;
 }
 
-.add-subway-stop-widget {
-  height: 300px;
-  width: 300px;
-  margin: 30px;
-  background-color: blue;
-}
-
 .subway-stop-widget-container {
   height: 300px;
   width: 300px;
@@ -52,17 +45,26 @@
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  background-color: orange;
+  background: linear-gradient(45deg, rgba(1,77,20,1) 0%, rgba(0,0,0,1) 100%);
 }
 
-.add-route-container {
-
+.user-route-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  width: 300px;
+  overflow: scroll;
+  background: linear-gradient(45deg, rgba(1,77,20,1) 0%, rgba(0,0,0,1) 100%);
+  color: white;
+  margin: 30px;
 }
 
 .route-widget-container {
   width: 300px;
   height: 300px;
   margin: 2.5%;
-  border-color: 2px solid black;
-  background-color: red;
+  color: white;
+
+  background: linear-gradient(45deg, rgba(1,77,20,1) 0%, rgba(0,0,0,1) 100%);
 }
