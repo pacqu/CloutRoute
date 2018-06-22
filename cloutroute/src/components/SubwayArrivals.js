@@ -61,18 +61,20 @@ class SubwayArrivals extends Component {
     if(northboundtrains !== undefined && northboundtrains.length !== 0){
       northList = northboundtrains.slice(0, 5).map((trains,i) =>{
         var northDate = new Date(trains.arrivalTime*1000);
-        return (<li key={i}>{trains.routeId} || Arrival: {northDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
+        return (<li key={i}>{trains.routeId} - {northDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
     }
     if(southboundtrains !== undefined && southboundtrains.length !== 0){
       southList = southboundtrains.slice(0, 5).map((trains,i) =>{
         var southDate = new Date(trains.arrivalTime*1000);
-      return (<li key={i}>{trains.routeId} || Arrival: {southDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
+      return (<li key={i}>{trains.routeId} - {southDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })} </li>)})
     }
     return (
       <div className="subway-component-container">
-        <p className="station-name">
-          {stationName}
-        </p>
+        <div className="station-name-container">
+          <p className="station-name">
+            {stationName}
+          </p>
+        </div>
         <div className="arrivals-container" id="Northbound-Trains">
           <p className="arrivals-label">Uptown</p>
           <ul>

@@ -2,15 +2,25 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 300px;
+  margin: 30px;
   overflow: scroll;
-  background-color: #87B2AC;
+  background: linear-gradient(45deg, rgb(7,5,168), rgb(0,0,0) );
+  color: white;
+}
+
+.station-name-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  height: 12%;
 }
 
 .station-name {
   width: 100%;
-  background-color: #57BFB0;
+  background-color: black;
   color: white;
   font-size: 1.5em;
   margin: 0;
@@ -24,10 +34,12 @@
   color: white;
   font-size: 1.1em;
   margin: 0;
+  margin-bottom: 8px;
 }
 
 ul {
   list-style-type: none;
+  color: lightgrey;
   padding: 0;
   margin: 0;
 }
@@ -36,8 +48,31 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #87B2AC;
+  background: linear-gradient(45deg, rgb(7,5,168), rgb(0,0,0) );
   height: 150px;
   width: 300px;
   margin: 30px;
+}
+
+.pin-header {
+  color: white;
+}
+
+.add-subway-label {
+  font-size: 1.2em;
+}
+
+#component-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#subway-submit-button {
+  font-size: 1.5em;
+  text-align: center;
+  background-color: blue;
+  border: 2px solid black;
+  height: 40px;
+  width: 80px;
+  margin: 10px;
 }

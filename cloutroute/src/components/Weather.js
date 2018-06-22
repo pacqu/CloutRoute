@@ -47,6 +47,9 @@ NEED TO ADD CSS ICONS
     return (
       <div className="Weather">
         <div className="Weather-header">
+            <p className="temperature-display" id="city">
+              {this.state.city}
+            </p>
             <p className="temperature-display">
               Low {((min * 1) * 9/5 - 459.67).toFixed(0)}
             </p>

@@ -52,7 +52,11 @@ class SubwaySetup extends Component {
     return (
       <div className="add-subway-component-container">
         <div id="component-header">
-        Add a Pinned Station
+          <div className="pin-header">
+            <p className="add-subway-label">
+              Add Station
+            </p>
+          </div>
         </div>
         <div id="component-content">
         <select ref="stop_to_add">
@@ -60,7 +64,7 @@ class SubwaySetup extends Component {
         </select>
         <button id="subway-submit-button" type="button"
         onClick={this.handleSubmitSubwayStation.bind(this)}>
-        Pin Station
+        Pin
         </button>
         </div>
       </div>
