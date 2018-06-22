@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import axios from "axios";
 
 class RouteForm extends Component {
   constructor(props){
     super(props);
     this.state = {
+      username: this.props.username,
       origin: '',
-      destination: '',
+      destination: ''
       //PERHAPS ADD TIMES?
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -22,9 +24,20 @@ class RouteForm extends Component {
   }
   handleSubmit(event){
     event.preventDefault();
-
-    console.log( this.state.origin );
-
+    var jsonBody = {
+      username: "justin",
+      origin: this.refs.origin.value,
+      destination: this.refs.destination.value
+    };
+    fetch('/users/addroute', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonBody)
+    }).then(axios.get('/users/getuser/' + this.state.username).then(
+      (res) => this.props.updateFunc(res.data)));
   }
   render(){
     return (
@@ -41,6 +54,7 @@ class RouteForm extends Component {
             Origin:
             <input
               name="origin"
+              ref="origin"
               type="text"
               onChange={this.handleInputChange} />
           </label>
@@ -49,6 +63,7 @@ class RouteForm extends Component {
             Destination:
             <input
               name="destination"
+              ref="destination"
               type="text"
               onChange={this.handleInputChange} />
             </label>
