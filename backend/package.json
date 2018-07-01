@@ -16,6 +16,6 @@
     "merge-json": "0.1.0-b.3",
     "morgan": "~1.9.0",
     "mta-gtfs": "file:mta-gtfs",
-    "sqlite3": "^4.0.0"
+    "sqlite3": "^4.0.1"
   }
 }

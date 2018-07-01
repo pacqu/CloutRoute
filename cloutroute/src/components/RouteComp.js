@@ -57,6 +57,14 @@ class RouteComp extends Component {
               arrive by {routes[0].legs[0].arrival_time.text}
             </p>
           </div>
+          <div clasName="route-map">
+            <iframe width="500" height="375" frameborder="0" style={{border:0}}
+              src={"https://www.google.com/maps/embed/v1/directions?origin=" + encodeURIComponent(this.state.origin)
+                + "&destination=" + encodeURIComponent(this.state.destination)
+                + "&key=AIzaSyD3_GHmb4k7sKXq9hQ9nOtJYCwZ_IhmGP8"
+                + "&mode=transit"}
+              allowfullscreen></iframe>
+          </div>
         </div>
       )
     }

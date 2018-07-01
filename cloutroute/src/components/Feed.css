@@ -54,8 +54,8 @@
 }
 
 .route-widget-container {
-  width: 300px;
-  height: 300px;
+  width: 600px;
+  height: 600px;
   margin: 30px;
   color: white;
   background: linear-gradient(45deg, rgba(1,77,20,1) 0%, rgba(0,0,0,1) 100%);
