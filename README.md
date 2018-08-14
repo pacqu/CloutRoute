@@ -1,5 +1,11 @@
 
 # CloutRoute
+CloutRoute enables users to save common commuting information in one simple app.
+
+Use the application here! (May take Heroku a minute...)
+http://cloutroute.herokuapp.com/
+
+## Local Build Instructions
 
 ### For the React Front-End
 - cd into cloutroute
